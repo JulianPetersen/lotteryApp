@@ -1,0 +1,18 @@
+<ion-card *ngFor="let p of publicaciones">
+    <div class="header">
+        <ion-avatar class="imgAvatar">
+            <img src={{p.usuario.imgProfile}}>
+        </ion-avatar>
+        <ion-card-subtitle>{{p.user}}</ion-card-subtitle>
+    </div>
+    <div class="containerImg">
+        <img class="imgSorteo" src= {{p.imgUrl}} alt="">
+    </div>
+    <ion-card-content>
+      {{p.description}}
+    </ion-card-content> 
+    <ion-button expand="full" color="primary" [routerLink] ="['{{p.socialLink}}']">Participar</ion-button>
+</ion-card>
+
+  
+  

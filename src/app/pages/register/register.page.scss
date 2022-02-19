@@ -1,0 +1,34 @@
+.contenedor{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.logo{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.logoImg{
+    width: 70%;
+}
+
+.form{
+
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.inputItem{
+    width: 80%;
+}
+
+
+
+.btn{
+    margin-top: 20px;
+}

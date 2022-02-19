@@ -1,0 +1,25 @@
+<ion-content class="contenedor">
+
+  <div class="logo">
+    <img class="logoImg" src="assets/logo.png" alt="">
+  </div>
+
+  <div class="form">
+    <ion-item class="inputItem">
+      <ion-label position="floating">Usuario</ion-label>
+      <ion-input [(ngModel)]="user.email" class="fuente"></ion-input>
+    </ion-item>
+    
+    <ion-item class="inputItem">
+      <ion-label position="floating">Contraseña</ion-label>
+      <ion-input [(ngModel)]="user.password" type="password"></ion-input>
+    </ion-item>
+    
+    <ion-button class="inputItem btn fuente" color="primary" (click)="signIn()">Ingresar</ion-button>
+
+    <p class="fuente">Olvide mi contraseña</p>
+    
+    <ion-button class="inputItem btn fuente" fill="outline" color="primary" [routerLink] ="['/register']">Registrarse</ion-button>
+    
+  </div>
+</ion-content>
