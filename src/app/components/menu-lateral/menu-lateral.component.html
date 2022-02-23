@@ -4,24 +4,33 @@
       <ion-title>Menu Principal</ion-title>
     </ion-toolbar>
   </ion-header>
+
+
   <ion-content>
     <ion-list>
-      <ion-item [routerLink]="['/home']" >
-        <ion-icon name="home"></ion-icon>
-        <ion-label class="label">Inicio</ion-label> 
-      </ion-item>
-      <ion-item>
-        <ion-icon name="person"></ion-icon>
-        <ion-label class="label">Mi Cuenta</ion-label> 
-      </ion-item>
-      <ion-item [routerLink]="['/lottery-post']">
-        <ion-icon  name="cloud-upload"></ion-icon>
-        <ion-label class="label">Publicar Sorteo</ion-label> 
-      </ion-item>
-      <ion-item [routerLink]="['/categories']">
-        <ion-icon name="list"></ion-icon>
-        <ion-label class="label">Categorias</ion-label> 
-      </ion-item>
+
+      <ion-menu-toggle>
+        <ion-item [routerLink]="['/home']" >
+          <ion-icon name="home"></ion-icon>
+          <ion-label class="label">Inicio</ion-label> 
+        </ion-item>
+        <ion-item>
+          <ion-icon name="person"></ion-icon>
+          <ion-label class="label">Mi Cuenta</ion-label> 
+        </ion-item>
+        <ion-item [routerLink]="['/lottery-post']">
+          <ion-icon  name="cloud-upload"></ion-icon>
+          <ion-label class="label">Publicar Sorteo</ion-label> 
+        </ion-item>
+        <ion-item [routerLink]="['/categories']">
+          <ion-icon name="list"></ion-icon>
+          <ion-label class="label">Categorias</ion-label> 
+        </ion-item>
+        <ion-item (click)="logOut()">
+          <ion-icon name="power"></ion-icon>
+          <ion-label class="label">Cerrar sesion</ion-label> 
+        </ion-item>
+      </ion-menu-toggle>
     </ion-list>
   </ion-content>
 </ion-menu>

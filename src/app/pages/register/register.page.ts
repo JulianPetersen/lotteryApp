@@ -14,7 +14,14 @@ export class RegisterPage implements OnInit {
   user = {
     email: '',
     password: '',
+    username: ''
   };
+
+
+  errMail:boolean = false
+  errUsername:boolean = false
+  errPassword:boolean = false
+
 
   constructor(private menuCtrl:MenuController, 
               private authService: AuthService, 
@@ -27,7 +34,8 @@ export class RegisterPage implements OnInit {
 
 
   singUp(){
-    this.authService.singUp(this.user)
+    if(this.validateData()){
+      this.authService.singUp(this.user)
       .subscribe(
         res => {
           console.log(res);
@@ -38,5 +46,24 @@ export class RegisterPage implements OnInit {
           console.log(err);
         }
       )
+    }
+    }
+      
+      
+
+  validateData(){
+    if(this.user.email == ''){
+      this.errMail = true
+      return false
+    }else if(this.user.password == ''){
+      this.errPassword = true
+      return false
+    }else if(this.user.username == ''){
+      this.errUsername = true
+      return false
+    }else{
+      return true
+    }
+    
   }
 }

@@ -1,12 +1,17 @@
 import { Injectable } from '@angular/core';
 import { Categories } from '../models/categories';
+import { HttpClient, HttpHeaders } from '@angular/common/http'
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class CategoriesService {
 
-  constructor() { }
+  constructor(private http:HttpClient) { }
+
+  private URL = 'http://localhost:3000/api/'
+
 
   categories: Categories[] = [
     {id:"1", title:"Ropa e Indumentaria", icon:"shirt"},
@@ -16,4 +21,8 @@ export class CategoriesService {
     {id:"1", title:"Celulares", icon:"phone-portrait"}
   ]
 
+
+  getAllCategory(){
+    return this.http.get<any>(this.URL + 'category');
+  }
 }

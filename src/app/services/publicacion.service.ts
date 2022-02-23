@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http'
-import { Publicacion } from '../models/publicacion';
 import { AuthService } from './auth.service';
+
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +9,7 @@ import { AuthService } from './auth.service';
 export class PublicacionService {
   
   private URL = 'http://localhost:3000/api/'
-  
+
   constructor(private http:HttpClient, private auth:AuthService) { }
 
 
@@ -20,4 +20,19 @@ export class PublicacionService {
     return this.http.get<any>(this.URL + 'post', {headers});
   }
 
+
+  createPost( description:string, socialLink:string, category:any, imgUrl:File){
+    const headers = new HttpHeaders({
+      'authorization': `bearer ${this.auth.getToken()}`
+    })
+    const fd =  new FormData();
+    fd.append('description', description),
+    fd.append('socialLink', socialLink),
+    fd.append('category', category)
+    fd.append('image', imgUrl)
+    return this.http.post(this.URL + 'post',fd,{headers})
+  }
+
 }
+
+

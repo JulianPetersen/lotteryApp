@@ -12,6 +12,5 @@ export class HomePage {
 
 
   ngOnInit() {
-    this.menuCtrl.enable(true)
   }
 }

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from 'src/app/services/auth.service';
+import { MenuController } from '@ionic/angular';
 
 @Component({
   selector: 'app-menu-lateral',
@@ -7,8 +9,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MenuLateralComponent implements OnInit {
 
-  constructor() { }
+  constructor(private auth: AuthService, private menu:MenuController) { }
 
   ngOnInit() {}
 
+
+  logOut(){
+    this.auth.logOut();
+  }
+
+
 }
+

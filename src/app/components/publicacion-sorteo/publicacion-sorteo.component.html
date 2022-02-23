@@ -3,7 +3,7 @@
         <ion-avatar class="imgAvatar">
             <img src={{p.usuario.imgProfile}}>
         </ion-avatar>
-        <ion-card-subtitle>{{p.user}}</ion-card-subtitle>
+        <ion-card-subtitle>{{p.usuario.username}}</ion-card-subtitle>
     </div>
     <div class="containerImg">
         <img class="imgSorteo" src= {{p.imgUrl}} alt="">
@@ -11,7 +11,9 @@
     <ion-card-content>
       {{p.description}}
     </ion-card-content> 
-    <ion-button expand="full" color="primary" [routerLink] ="['{{p.socialLink}}']">Participar</ion-button>
+    
+    <a class="SocialLinkButton fuente" href="{{p.socialLink}}">Participar</a>
+       
 </ion-card>
 
   

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PublicacionService } from 'src/app/services/publicacion.service';
-
+import { LoadingController } from '@ionic/angular';
 
 @Component({
   selector: 'app-publicacion-sorteo',
@@ -9,22 +9,29 @@ import { PublicacionService } from 'src/app/services/publicacion.service';
 })
 export class PublicacionSorteoComponent implements OnInit {
 
-  constructor(public publi:PublicacionService) { }
+  constructor(public publi:PublicacionService, public loader:LoadingController) { }
   
   publicaciones:any
+  loading: any;
 
-  ngOnInit() {
+  async ngOnInit() {
+    await this.presentLoading();
+    this.getAllpost();
+  }  
 
-    this.getAllpost()
-
+  async presentLoading(){
+    this.loading = await this.loader.create({
+      message: 'Cargando...'
+    });
+    return this.loading.present();
   }
 
-
-  getAllpost(){
+  async getAllpost(){
     this.publi.getAllPost()
       .subscribe (res => {
         this.publicaciones = res;
         console.log(this.publicaciones)
+        this.loading.dismiss();
       },
       err =>{
         console.log(err);

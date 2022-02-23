@@ -18,8 +18,12 @@
     <ion-button class="inputItem btn fuente" color="primary" (click)="signIn()">Ingresar</ion-button>
 
     <p class="fuente">Olvide mi contraseña</p>
-    
     <ion-button class="inputItem btn fuente" fill="outline" color="primary" [routerLink] ="['/register']">Registrarse</ion-button>
-    
+  </div>
+
+  <div class="logo">
+    <p *ngIf="errMail" class="fuente errMessage">Ingrese un Email</p>
+    <p *ngIf="errPass" class="fuente errMessage">Ingrese una contraseña</p>
+     <p class="fuente errMessage">{{resError}}</p> 
   </div>
 </ion-content>

@@ -9,6 +9,11 @@
       <ion-label  position="floating">Email</ion-label>
       <ion-input [(ngModel)]="user.email" class="fuente"></ion-input>
     </ion-item>
+
+    <ion-item class="inputItem">
+      <ion-label  position="floating">Nombre de Usuario</ion-label>
+      <ion-input  [(ngModel)]="user.username" class="fuente input"></ion-input>
+    </ion-item>
     
     <ion-item class="inputItem">
       <ion-label position="floating">Contraseña</ion-label>
@@ -18,6 +23,11 @@
     <ion-button class="inputItem btn fuente" color="primary" (click)="singUp()">Registrarme</ion-button>
 
     <p class="fuente" [routerLink] ="['/login']">Ya tengo una cuenta</p>
-  
+  </div>
+
+  <div class="logo">
+    <p *ngIf="errMail" class="fuente errMessage">- Debe ingresar un Email</p>
+    <p *ngIf="errUsername" class="fuente errMessage">- Debe ingresar un Nombre de Usuario</p>
+    <p *ngIf="errPassword" class="fuente errMessage">- Debe Ingresar una contraseña</p>
   </div>
 </ion-content>

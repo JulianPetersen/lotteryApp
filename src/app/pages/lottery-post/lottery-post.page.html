@@ -1,27 +1,35 @@
 <app-header></app-header>
-
-
 <ion-content>
     <div class="formulario">
         <h1 class="fuente">Publique su Nuevo sorteo</h1>
-        <ion-item class="item">
-          <ion-label position="floating">Titulo</ion-label>
-          <ion-input></ion-input>
-        </ion-item>
         <ion-item>
           <ion-label position="floating">Descripción</ion-label>
-          <ion-textarea></ion-textarea>
+          <ion-textarea [(ngModel)]="newPost.description"></ion-textarea>
         </ion-item>
-        <ion-item class="item">
-          <input  class="inputFile" type="file" (change)="onPhotoSelected($event)"  #photoInput>
-          <img [src]="photoSelected || 'assets/noimageb.png '" alt="" (click) = "photoInput.click()">
+        <ion-item>
+          <ion-label position="floating">Coloque el link de su sorteo</ion-label>
+          <ion-input [(ngModel)]="newPost.SocialLink"></ion-input>
         </ion-item>
+
+        <ion-item>
+          <ion-label>Categoria</ion-label>
+          <ion-select>
+            <ion-select-option *ngFor="let c of categorys">{{c.name}}</ion-select-option>
+          </ion-select>
+        </ion-item>
+
+
         <div>
           <p class="fuente">Su publicación tendra un coste de $200 ARS</p>
-          <ion-button expand="full" color="primary">Publicar</ion-button>
+          <ion-button expand="full"  (click)="selectImage()">
+            Agregar Foto
+          </ion-button>
         </div>
-        
     </div>
-    
-    
+
 </ion-content>
+
+<ion-footer>
+  <ion-button expand="full" color="primary" (click)="uploadPhoto()">Publicar</ion-button>
+</ion-footer>
+
