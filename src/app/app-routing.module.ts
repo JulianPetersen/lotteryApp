@@ -31,6 +31,14 @@ const routes: Routes = [
     path: 'lottery-post',
     loadChildren: () => import('./pages/lottery-post/lottery-post.module').then( m => m.LotteryPostPageModule)
   },
+  {
+    path: 'category-selected/:id',
+    loadChildren: () => import('./pages/category-selected/category-selected.module').then( m => m.CategorySelectedPageModule)
+  },
+  {
+    path: 'my-account',
+    loadChildren: () => import('./pages/my-account/my-account.module').then( m => m.MyAccountPageModule)
+  },
 ];
 
 @NgModule({

@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { PublicacionService } from 'src/app/services/publicacion.service';
 import { Camera, CameraResultType, CameraSource, Photo } from '@capacitor/camera';
 import { CategoriesService } from 'src/app/services/categories.service';
-
+import { AlertController } from '@ionic/angular';
 
 
 @Component({
@@ -12,49 +12,70 @@ import { CategoriesService } from 'src/app/services/categories.service';
 })
 export class LotteryPostPage implements OnInit {
   newPost = {
-   
     description: '',
     SocialLink: ''
   };
+  
+
   file:File;
-  categorys:any[] = [];
+  categorys:any;
+  
+
+  categorySelected:any;
 
 
-
-
+  errDescription:boolean = false;
+  errLink:boolean = false;
+  errFile:boolean=false;
+ 
   constructor(public post:PublicacionService, 
-              public category:CategoriesService) { }
+              public category:CategoriesService,
+              public alertController: AlertController) { }
   
   ngOnInit() {
       this.getAllCategory();
   }
 
 
-  uploadPhoto(){
-    this.post.createPost(this.newPost.description, this.newPost.SocialLink,this.categorys[0]._id,this.file)
+//#region "http reqests"
+   uploadPhoto(){
+     if(this.validateData()){
+      this.post.createPost(this.newPost.description, this.newPost.SocialLink,this.categorySelected,this.file)
       .subscribe ( 
         res => {console.log(res),
         err => console.log(err)
       });
+     }
+    }
+
+//obtengo todas las categorias
+  getAllCategory(){
+    this.category.getAllCategory()
+      .subscribe(res => {
+        this.categorys = res;
+        console.log(res);
+      })
   }
+  
+//#endregion "http reqests"
 
 
+
+//#region "Camera Photo and upload"
 //saco una foto con la camara.
   async selectImage(){
     const image = await Camera.getPhoto({
       quality:90,
-      allowEditing:false,
+      source: CameraSource.Camera,
       resultType: CameraResultType.Uri,
-    }).then  (async (imageData) => {
-
+    })
+    .then  (async (imageData) => {
       this.readAsBase64(imageData);
-
     }, (err) => {
       console.log('error: ', err)
     })
   }
   
-
 //transformo la foto que saque con la camara a base64
   private async readAsBase64(photo: Photo) {
     // Fetch the photo, read as a blob, then convert to base64 format
@@ -69,15 +90,30 @@ export class LotteryPostPage implements OnInit {
     return new File([theBlob], fileName, { lastModified: new Date().getTime(), type: theBlob.type })
 }
 
-//obtengo todas las categorias
+//#endregion "Camera Photo and upload"
 
-getAllCategory(){
-  this.category.getAllCategory()
-    .subscribe(res => {
-      this.categorys = res;
-      console.log(res);
-    })
+
+
+validateData(){
+  if(this.newPost.description == ""){
+    this.errDescription = true;
+    return false
+  }else if(this.newPost.SocialLink == ""){
+    this.errLink = true;
+    return false;
+  }else if(this.file == null || undefined){
+    this.errFile = true;
+    return false;
+  }else{
+    return true;
+  }
 }
 
 
+setCategory(){
+  console.log(this.categorySelected)
 }
+}
+
+
+

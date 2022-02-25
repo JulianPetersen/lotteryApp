@@ -1,0 +1,10 @@
+<app-header></app-header>
+
+<ion-content>
+   <div>
+      <app-publicacion-sorteo *ngFor="let p of postByCategories"
+         [publicaciones] = "p"
+      ></app-publicacion-sorteo>   
+   </div>
+    
+</ion-content>

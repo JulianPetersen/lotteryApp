@@ -1,11 +1,15 @@
 <ion-header class="toolbar">
-  
-  <ion-buttons>
-    <ion-button (click)="toggleMenu()">
-      <ion-icon color="primary" slot="icon-only" name="menu-outline"></ion-icon>
-    </ion-button>
-  </ion-buttons>
-
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="toggleMenu()">
+        <ion-icon color="primary" slot="icon-only" name="menu-outline"></ion-icon>
+      </ion-button>
+      <ion-back-button color="primary"></ion-back-button>
+      <!-- <ion-button href="/home">
+        <ion-icon name="arrow-back"></ion-icon>
+      </ion-button> -->
+    </ion-buttons>
+  </ion-toolbar>
 </ion-header>
 
 

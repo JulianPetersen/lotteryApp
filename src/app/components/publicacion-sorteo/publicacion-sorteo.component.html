@@ -1,18 +1,18 @@
-<ion-card *ngFor="let p of publicaciones">
+<ion-card>
     <div class="header">
         <ion-avatar class="imgAvatar">
-            <img src={{p.usuario.imgProfile}}>
+            <img src={{publicaciones.usuario.imgProfile}}>
         </ion-avatar>
-        <ion-card-subtitle>{{p.usuario.username}}</ion-card-subtitle>
+        <ion-card-subtitle>{{publicaciones.usuario.username}}</ion-card-subtitle>
     </div>
     <div class="containerImg">
-        <img class="imgSorteo" src= {{p.imgUrl}} alt="">
+        <img class="imgSorteo" src= {{publicaciones.imgUrl}} alt="">
     </div>
     <ion-card-content>
-      {{p.description}}
+      {{publicaciones.description}}
     </ion-card-content> 
     
-    <a class="SocialLinkButton fuente" href="{{p.socialLink}}">Participar</a>
+    <a class="SocialLinkButton fuente" href="{{publicaciones.socialLink}}">Participar</a>
        
 </ion-card>
 
