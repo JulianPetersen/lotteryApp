@@ -3,6 +3,7 @@ import { PublicacionService } from 'src/app/services/publicacion.service';
 import { Camera, CameraResultType, CameraSource, Photo } from '@capacitor/camera';
 import { CategoriesService } from 'src/app/services/categories.service';
 import { AlertController } from '@ionic/angular';
+import { StorageServiceService } from 'src/app/services/storage-service.service';
 
 
 @Component({
@@ -19,10 +20,10 @@ export class LotteryPostPage implements OnInit {
 
   file:File;
   categorys:any;
-  
-
   categorySelected:any;
 
+  imagenSelected:any
+  urlImagenSelected:string 
 
   errDescription:boolean = false;
   errLink:boolean = false;
@@ -30,7 +31,8 @@ export class LotteryPostPage implements OnInit {
  
   constructor(public post:PublicacionService, 
               public category:CategoriesService,
-              public alertController: AlertController) { }
+              public alertController: AlertController,
+              public storage:StorageServiceService) { }
   
   ngOnInit() {
       this.getAllCategory();
@@ -40,7 +42,7 @@ export class LotteryPostPage implements OnInit {
 //#region "http reqests"
    uploadPhoto(){
      if(this.validateData()){
-      this.post.createPost(this.newPost.description, this.newPost.SocialLink,this.categorySelected,this.file)
+      this.post.createPost(this.newPost.description, this.newPost.SocialLink,this.categorySelected,this.urlImagenSelected)
       .subscribe ( 
         res => {console.log(res),
         err => console.log(err)
@@ -82,12 +84,29 @@ export class LotteryPostPage implements OnInit {
     const response = await fetch(photo.webPath!);
     const blob = await response.blob();
     this.file = this.blobToFile(blob,'Foto')
+    this.cargarImagen();
     console.log(this.file)
   }
 
 //transformo la foto a tipo File, para poder enviarla al servidor.
   public blobToFile(theBlob, fileName){       
     return new File([theBlob], fileName, { lastModified: new Date().getTime(), type: theBlob.type })
+}
+
+//cargando imagen a firebase
+cargarImagen(){
+  let archivo = this.file;
+  let reader = new FileReader();
+
+  reader.readAsDataURL(archivo);
+  reader.onloadend = () => {
+    console.log(reader.result)
+    this.imagenSelected = reader.result
+    this.storage.subirImagen('ImageFile' + "_" + Date.now(), reader.result).then(urlImagen => {
+      this.urlImagenSelected = urlImagen
+      console.log(this.urlImagenSelected);
+    })
+  }
 }
 
 //#endregion "Camera Photo and upload"
@@ -113,6 +132,11 @@ validateData(){
 setCategory(){
   console.log(this.categorySelected)
 }
+
+
+
+
+
 }
 
 

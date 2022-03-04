@@ -8,9 +8,9 @@ import { AuthService } from './auth.service';
 })
 export class PublicacionService {
   
-  private URL = 'https://appversion2.herokuapp.com/api/'
+  private URL = 'http://localhost:3000/api/'
 
-  constructor(private http:HttpClient, private auth:AuthService) { }
+  constructor(private http:HttpClient, private auth:AuthService,) { }
 
 
   getAllPost(){
@@ -21,7 +21,7 @@ export class PublicacionService {
   }
 
 
-  createPost( description:string, socialLink:string, category:any, imgUrl:File){
+  createPost( description:string, socialLink:string, category:any, imgUrl:string){
     const headers = new HttpHeaders({
       'authorization': `bearer ${this.auth.getToken()}`
     })
@@ -29,7 +29,7 @@ export class PublicacionService {
     fd.append('description', description),
     fd.append('socialLink', socialLink),
     fd.append('category', category)
-    fd.append('image', imgUrl)
+    fd.append('imgUrl', imgUrl)
     return this.http.post(this.URL + 'post',fd,{headers})
   }
 
