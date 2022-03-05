@@ -17,6 +17,10 @@ export class HomePage {
     this.getAllpost();
   }
 
+  toggleMenu(){
+    this.menuCtrl.toggle();
+  }
+
 
   getAllpost(){
     this.post.getAllPost()
@@ -29,16 +33,10 @@ export class HomePage {
       })
   }
 
-
-  toggleMenu(){
-    this.menuCtrl.toggle();
-  }
-
-
-  doRefresh(event){
-    setTimeout(()=> {
-      this.ngOnInit();
-      event.target.complete();
-    }, 2000)
-  }
+  // doRefresh(event){
+  //   setTimeout(()=> {
+  //     this.ngOnInit();
+  //     event.target.complete();
+  //   }, 2000)
+  // }
 }

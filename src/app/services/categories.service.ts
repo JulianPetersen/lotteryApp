@@ -10,7 +10,7 @@ export class CategoriesService {
 
   constructor(private http:HttpClient) { }
 
-  private URL = 'http://localhost:3000/api/'
+  private URL = 'https://appversion2.herokuapp.com/api/'
 
 
 
