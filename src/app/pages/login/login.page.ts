@@ -25,28 +25,15 @@ export class LoginPage implements OnInit {
 
   cabecera = new HttpHeaders();
 
-
- //loader
- loading:any
-
-
   constructor(
               private router:Router, 
               private menuCtrl:MenuController,
               private authservice:AuthService,
-              private loader:LoadingController) { }
+              ) { }
     
 
   ngOnInit() {
     this.menuCtrl.enable(false)
-  }
-
-
-  async presentLoading(){
-    this.loading = await this.loader.create({
-      message: 'Cargando...'
-    });
-    return this.loading.present();
   }
 
   async signIn(){

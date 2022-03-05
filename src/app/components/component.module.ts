@@ -3,8 +3,8 @@ import { CommonModule } from '@angular/common';
 import { IonicModule } from '@ionic/angular';
 import { PublicacionSorteoComponent } from './publicacion-sorteo/publicacion-sorteo.component';
 import { HeaderComponent } from './header/header.component';
-import { MenuLateralComponent } from './menu-lateral/menu-lateral.component';
 import { RouterModule } from '@angular/router';
+import { MenuComponent } from './menu/menu.component';
 
 
 
@@ -12,7 +12,7 @@ import { RouterModule } from '@angular/router';
   declarations: [
     PublicacionSorteoComponent,
     HeaderComponent,
-    MenuLateralComponent
+    MenuComponent
   ],
   imports: [
     CommonModule,
@@ -22,7 +22,7 @@ import { RouterModule } from '@angular/router';
   exports: [
     PublicacionSorteoComponent,
     HeaderComponent,
-    MenuLateralComponent
+    MenuComponent
   ]
 })
 export class ComponentModule { }
