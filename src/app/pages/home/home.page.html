@@ -1,10 +1,17 @@
-<app-header></app-header>
+<ion-header class="toolbar">
+  <ion-toolbar>
+    <ion-buttons>
+        <ion-menu-button color="primary" menu="first"></ion-menu-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
 
 <ion-content class="contenedor">
 
-  <!-- <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+   <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
     <ion-refresher-content></ion-refresher-content>
-  </ion-refresher> -->
+  </ion-refresher> 
 
   <app-publicacion-sorteo *ngFor="let p of publicaciones"
   [publicaciones] = "p"

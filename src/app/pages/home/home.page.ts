@@ -9,17 +9,15 @@ import { PublicacionService } from 'src/app/services/publicacion.service';
 })
 export class HomePage {
 
-  constructor(private post:PublicacionService,private menuCtrl: MenuController) {}
+  constructor(private post:PublicacionService, public mnu:MenuController) {}
 
   publicaciones:any
 
   ngOnInit() {
     this.getAllpost();
+    this.mnu.enable(true);
   }
 
-  toggleMenu(){
-    this.menuCtrl.toggle();
-  }
 
 
   getAllpost(){
@@ -33,10 +31,10 @@ export class HomePage {
       })
   }
 
-  // doRefresh(event){
-  //   setTimeout(()=> {
-  //     this.ngOnInit();
-  //     event.target.complete();
-  //   }, 2000)
-  // }
+   doRefresh(event){
+    setTimeout(()=> {
+      this.ngOnInit();
+      event.target.complete();
+    }, 2000)
+  }
 }
