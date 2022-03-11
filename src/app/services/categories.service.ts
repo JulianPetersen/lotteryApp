@@ -10,7 +10,7 @@ export class CategoriesService {
 
   constructor(private http:HttpClient) { }
 
-  private URL = 'http://vps-2437696-x.dattaweb.com:3000/api/'
+  private URL = 'https://api.sorteandorest.com.ar/api/'
 
 
 

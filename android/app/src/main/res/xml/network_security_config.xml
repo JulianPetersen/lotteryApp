@@ -4,6 +4,6 @@
         <domain includeSubdomains="true">localhost</domain>
         <domain includeSubdomains="true">10.0.2.2</domain>
         <domain includeSubdomains="true">https://appversion2.herokuapp.com/</domain>
-        <domain includeSubdomains="true">http://vps-2437696-x.dattaweb.com/</domain>
+        <domain includeSubdomains="true">https://api.sorteandorest.com.ar</domain>
     </domain-config>
 </network-security-config>
