@@ -9,6 +9,8 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin-top: 30px;
+    margin-bottom: 30px;
 }
 
 .logoImg{
@@ -21,6 +23,10 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+
+.mail{
+    text-transform: lowercase;
 }
 
 .inputItem{

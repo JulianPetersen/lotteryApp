@@ -3,14 +3,15 @@ import { MenuController } from '@ionic/angular';
 import { AuthService } from 'src/app/services/auth.service';
 import { Router } from '@angular/router';
 
+
 @Component({
   selector: 'app-register',
   templateUrl: './register.page.html',
   styleUrls: ['./register.page.scss'],
 })
-export class RegisterPage implements OnInit {
 
 
+export class RegisterPage implements OnInit { 
   user = {
     email: '',
     password: '',

@@ -13,7 +13,19 @@
     <ion-refresher-content></ion-refresher-content>
   </ion-refresher> 
 
-  <app-publicacion-sorteo *ngFor="let p of publicaciones"
+  <app-publicacion-sorteo *ngFor="let p of dataList"
   [publicaciones] = "p"
   ></app-publicacion-sorteo>
+
+  <div class="notPublication fuente" *ngIf="dataList.length === 0">
+    <h1 class="margincero">No hay publicaciones</h1>
+    <p class="margincero text">se el primero en publicar</p>
+  </div>
+
+  <ion-infinite-scroll threshold="100px" (ionInfinite)="loadData($event)">
+    <ion-infinite-scroll-content
+      loadingSpinner="bubbles"
+      loadingText="Loading more data...">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
 </ion-content>

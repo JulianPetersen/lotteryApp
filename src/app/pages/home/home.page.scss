@@ -4,4 +4,18 @@
 
 
 
-
+.notPublication{
+  width: 100%;
+  height: 500px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color:rgb(182, 182, 182);
+}
+.text{
+  font-size: 20px;
+}
+.margincero{
+  margin: 0;
+}

@@ -3,8 +3,12 @@
 <ion-content>
    <div>
       <app-publicacion-sorteo *ngFor="let p of postByCategories"
-         [publicaciones] = "p"
+      [publicaciones] = "p"
       ></app-publicacion-sorteo>   
    </div>
-    
+   
+   <div class="notPublication fuente" *ngIf="postByCategories?.length === 0">
+      <h1 class="margincero">No hay publicaciones Aqui</h1>
+      <p class="margincero text">se el primero en publicar</p>
+   </div>
 </ion-content>

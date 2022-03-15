@@ -2,8 +2,9 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { PublicacionService } from 'src/app/services/publicacion.service';
 import { Camera, CameraResultType, CameraSource, Photo } from '@capacitor/camera';
 import { CategoriesService } from 'src/app/services/categories.service';
-import { AlertController } from '@ionic/angular';
+import { AlertController, LoadingController } from '@ionic/angular';
 import { StorageServiceService } from 'src/app/services/storage-service.service';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -28,11 +29,14 @@ export class LotteryPostPage implements OnInit {
   errDescription:boolean = false;
   errLink:boolean = false;
   errFile:boolean=false;
- 
+
+  loading:any;
   constructor(public post:PublicacionService, 
               public category:CategoriesService,
               public alertController: AlertController,
-              public storage:StorageServiceService) { }
+              public storage:StorageServiceService,
+              private loader:LoadingController,
+              private router:Router) { }
   
   ngOnInit() {
       this.getAllCategory();
@@ -47,6 +51,8 @@ export class LotteryPostPage implements OnInit {
         res => {console.log(res),
         err => console.log(err)
       });
+      this.router.navigateByUrl('/home');
+
      }
     }
 
@@ -68,8 +74,9 @@ export class LotteryPostPage implements OnInit {
   async selectImage(){
     const image = await Camera.getPhoto({
       quality:90,
-      source: CameraSource.Camera,
       resultType: CameraResultType.Uri,
+      source: CameraSource.Prompt,
+      
     })
     .then  (async (imageData) => {
       this.readAsBase64(imageData);
@@ -95,6 +102,7 @@ export class LotteryPostPage implements OnInit {
 
 //cargando imagen a firebase
 cargarImagen(){
+  this.presentLoading();
   let archivo = this.file;
   let reader = new FileReader();
 
@@ -105,6 +113,7 @@ cargarImagen(){
     this.storage.subirImagen('ImageFile' + "_" + Date.now(), reader.result).then(urlImagen => {
       this.urlImagenSelected = urlImagen
       console.log(this.urlImagenSelected);
+      this.loading.dismiss();
     })
   }
 }
@@ -129,13 +138,14 @@ validateData(){
 }
 
 
-setCategory(){
-  console.log(this.categorySelected)
+
+async presentLoading() {
+  this.loading = await this.loader.create({
+    message: 'cargando...',
+    //duration: 2000
+  });
+  return this.loading.present();
 }
-
-
-
-
 
 }
 

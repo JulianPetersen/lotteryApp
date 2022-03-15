@@ -4,6 +4,7 @@ import { MenuController } from '@ionic/angular';
 import { AuthService } from 'src/app/services/auth.service';
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { LoadingController } from '@ionic/angular';
+import { GlobalesService } from 'src/app/services/globales.service';
 
 @Component({
   selector: 'app-login',
@@ -33,7 +34,7 @@ export class LoginPage implements OnInit {
     
 
   ngOnInit() {
-    this.menuCtrl.enable(false)
+    this.menuCtrl.enable(true)
   }
 
   async signIn(){

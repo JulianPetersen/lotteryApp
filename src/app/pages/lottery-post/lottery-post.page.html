@@ -15,7 +15,7 @@
         </ion-item>
         <ion-item >
           <ion-label>Categoria</ion-label>
-          <ion-select [(ngModel)]="categorySelected" (ionChange)="setCategory();">
+          <ion-select [(ngModel)]="categorySelected">
             <ion-select-option *ngFor="let c of categorys; let i=index" [value]="c._id">{{c.name}}</ion-select-option>
           </ion-select>
         </ion-item>
