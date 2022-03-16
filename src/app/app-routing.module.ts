@@ -36,7 +36,7 @@ const routes: Routes = [
     loadChildren: () => import('./pages/category-selected/category-selected.module').then( m => m.CategorySelectedPageModule)
   },
   {
-    path: 'my-account',
+    path: 'my-account/:id',
     loadChildren: () => import('./pages/my-account/my-account.module').then( m => m.MyAccountPageModule)
   },
 ];

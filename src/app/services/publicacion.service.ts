@@ -21,6 +21,19 @@ export class PublicacionService {
     return this.http.get<any>(this.URL + 'post', {headers});
   }
 
+  getPostByUser(id:any){
+    return this.http.get<any>(this.URL + `post/userfiltrer/${id}`)
+  }
+
+
+
+  deletePost(id:any){
+    const headers = new HttpHeaders({
+      'authorization': `bearer ${this.auth.getToken()}`
+    })
+    return this.http.delete<any>(this.URL + `post/${id}`, {headers});
+  }
+
 
   createPost( description:string, socialLink:string, category:any, imgUrl:string){
     const headers = new HttpHeaders({

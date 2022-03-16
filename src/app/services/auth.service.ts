@@ -19,18 +19,17 @@ export class AuthService {
   
 
   singUp(user){
-    return this.http.post<Users>(this.URL + 'auth', user);
+    return this.http.post<any>(this.URL + 'auth', user);
   }
   
   
   signIn(user){
-    return this.http.post<Users>(this.URL + 'auth/singin',user)
+    return this.http.post<any>(this.URL + 'auth/singin',user)
   }
 
   loggedIn(){
     return !!localStorage.getItem('token');
   }
-
 
   getToken(){
     return localStorage.getItem('token');
@@ -38,6 +37,7 @@ export class AuthService {
 
   logOut(){
     localStorage.removeItem('token');
+    localStorage.removeItem('idUser')
     this.router.navigate(['/login'])
   }
 }

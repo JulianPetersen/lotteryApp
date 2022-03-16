@@ -37,3 +37,50 @@
     font-size: 30px;
     margin: 10px
 }
+
+
+
+
+.header{
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.popover{
+    width:100%;
+    display: flex;
+    justify-content: end;
+}
+.imgAvatar{
+
+    width: 50px;
+    height: 50px;
+    margin: 10px;
+}
+
+.imgSorteo{
+    width: 100%;
+}
+
+.containerImg{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.SocialLinkButton{
+    color: white;
+    background-color: tomato;
+    display: block;
+    width: 100%;
+    text-align: center;
+    padding: 10px;
+    text-decoration: none;
+    font-weight: bold;
+
+}
+
+.cardcontainer{
+    margin-top: 150px;
+}

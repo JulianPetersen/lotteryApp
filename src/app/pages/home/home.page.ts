@@ -57,7 +57,7 @@ export class HomePage {
         event.target.disabled = true;
       }
     },500)
-   
-    
   }
+
+  
 }

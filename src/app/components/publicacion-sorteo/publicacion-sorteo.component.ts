@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { PublicacionService } from 'src/app/services/publicacion.service';
 import { LoadingController } from '@ionic/angular';
+import { GlobalesService } from 'src/app/services/globales.service';
 
 @Component({
   selector: 'app-publicacion-sorteo',
@@ -9,14 +10,17 @@ import { LoadingController } from '@ionic/angular';
 })
 export class PublicacionSorteoComponent implements OnInit {
 
-  constructor(public publi:PublicacionService, public loader:LoadingController) { }
+  constructor(public publi:PublicacionService, public loader:LoadingController,public global:GlobalesService) { }
   
   @Input() publicaciones:any
 
-  async ngOnInit() {
+ ngOnInit() {
     
   }  
 
+  openBrowser(url){
+    this.global.openBrowser(url);
+  }
 
   
 

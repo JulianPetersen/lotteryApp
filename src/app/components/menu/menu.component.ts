@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
@@ -8,10 +9,15 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class MenuComponent implements OnInit {
 
-  constructor(private auth:AuthService) { }
+  constructor(private auth:AuthService, private router:Router) { }
 
   ngOnInit() {}
 
+
+  selectedUserId(){
+    let idUsuario = localStorage.getItem('idUser')
+    this.router.navigate(['/my-account/', idUsuario])
+  }
 
   logout(){
     this.auth.logOut();
