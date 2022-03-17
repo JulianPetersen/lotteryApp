@@ -22,6 +22,9 @@ export class AuthService {
     return this.http.post<any>(this.URL + 'auth', user);
   }
   
+  obtainUser(id){
+    return this.http.get<any>(`${this.URL}auth/${id}`)
+  }
   
   signIn(user){
     return this.http.post<any>(this.URL + 'auth/singin',user)
@@ -39,5 +42,10 @@ export class AuthService {
     localStorage.removeItem('token');
     localStorage.removeItem('idUser')
     this.router.navigate(['/login'])
+  }
+
+
+  updateUser(id, user){
+    return this.http.put<any>(`${this.URL}auth/${id}`, user)
   }
 }

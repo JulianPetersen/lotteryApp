@@ -5,6 +5,8 @@ import { CategoriesService } from 'src/app/services/categories.service';
 import { AlertController, LoadingController } from '@ionic/angular';
 import { StorageServiceService } from 'src/app/services/storage-service.service';
 import { Router } from '@angular/router';
+import { GlobalesService } from 'src/app/services/globales.service';
+import { HomePage } from '../home/home.page';
 
 
 @Component({
@@ -36,7 +38,8 @@ export class LotteryPostPage implements OnInit {
               public alertController: AlertController,
               public storage:StorageServiceService,
               private loader:LoadingController,
-              private router:Router) { }
+              private router:Router,
+              private global:GlobalesService) { }
   
   ngOnInit() {
       this.getAllCategory();
@@ -46,13 +49,17 @@ export class LotteryPostPage implements OnInit {
 //#region "http reqests"
    uploadPhoto(){
      if(this.validateData()){
+       this.global.presentLoading('Cargando...')
       this.post.createPost(this.newPost.description, this.newPost.SocialLink,this.categorySelected,this.urlImagenSelected)
       .subscribe ( 
-        res => {console.log(res),
+        res => {
+          setTimeout(() =>{
+            this.global.loadingController.dismiss();
+          },1000)
+          console.log(res),
         err => console.log(err)
       });
       this.router.navigateByUrl('/home');
-
      }
     }
 

@@ -1,43 +1,26 @@
 <app-header></app-header>
 
 <ion-content>
-    <div class="editinfo">
-        <p class="margincero fuente size"></p>
-        <ion-icon class="size" name="create"></ion-icon>
-    </div>
+    <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+        <ion-refresher-content></ion-refresher-content>
+      </ion-refresher> 
     <div class="profileUser">
+        <ion-icon class="size icon" (click)="presetnModal()" name="create"></ion-icon>
         <ion-avatar class="profileImg">
-            <img  src="assets/sorteo.jpg">
+            <img  src="{{user?.imgProfile}}">
         </ion-avatar>
-        <h4 class="fuente userName">Julian Petersen</h4>  
+        <h4 class="fuente userName">{{user?.username}}</h4>  
     </div>
 
 <div class="cardcontainer">
     <ion-card *ngFor="let p of publicaciones">
         <div class="header">
-            <ion-avatar class="imgAvatar">
-                <img src={{p.usuario.imgProfile}}>
-            </ion-avatar>
-            <ion-card-subtitle>{{p.usuario.username}}</ion-card-subtitle>
-                <div class="popover">
-                    <ion-buttons>
-                        <ion-button id="nested-button"><ion-icon slot="icon-only" name="menu"></ion-icon></ion-button>
-                    </ion-buttons>
-                    <ion-popover trigger="nested-button" [dismissOnSelect]="true">
-                    <ng-template>
-                    <ion-content>
-                        <ion-list>
-                            <ion-item (click)="deletePost(p._id)" [button]="true" [detail]="false">
-                                <ion-label>Eliminar</ion-label>
-                            </ion-item>
-                            <ion-item [button]="true" [detail]="false">
-                                <ion-label>Editar</ion-label>
-                            </ion-item>
-                        </ion-list>
-                    </ion-content>
-                    </ng-template>
-                    </ion-popover>  
-                </div>   
+            <div class="header">
+                <ion-avatar class="imgAvatar">
+                    <img src={{p.usuario.imgProfile}}>
+                </ion-avatar>
+                <ion-card-subtitle>{{p.usuario.username}}</ion-card-subtitle>
+            </div>
         </div>
         <div class="containerImg">
             <img class="imgSorteo" src= {{p.imgUrl}} alt="">
@@ -45,6 +28,15 @@
         <ion-card-content>
           {{p.description}}
         </ion-card-content>
+        <a class="SocialLinkButton fuente"  (click)="deletePost(p._id)">Eliminar Publicacion</a>
+        
     </ion-card>
 </div>
 </ion-content>
+
+
+
+
+<!-- <div class="popover">
+   
+</div>    -->

@@ -30,6 +30,7 @@ export class LoginPage implements OnInit {
               private router:Router, 
               private menuCtrl:MenuController,
               private authservice:AuthService,
+              private global:GlobalesService
               ) { }
     
 
@@ -39,9 +40,13 @@ export class LoginPage implements OnInit {
 
   async signIn(){
     if(this.validateData()){
+      this.global.presentLoading('Cargando...')
       this.authservice.signIn(this.user)
       .subscribe(
         res => {
+          setTimeout(() =>{
+            this.global.loadingController.dismiss();
+          },1000)
           localStorage.setItem('token', res.token)
           localStorage.setItem('idUser', res.usuario.id)
           this.router.navigate(['/home']);
@@ -49,6 +54,7 @@ export class LoginPage implements OnInit {
         err => {
           console.log(err.error)
            this.resError = err.error;
+           this.global.loadingController.dismiss();
         }
       ) 
     }
@@ -69,7 +75,11 @@ export class LoginPage implements OnInit {
     }
     
   }
+
+
+  
+}
   
 
 
-}
+

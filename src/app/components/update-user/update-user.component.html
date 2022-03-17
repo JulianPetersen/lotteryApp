@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-buttons>
+    <ion-button (click)="cerrarModal()">
+      <ion-icon   slot="icon-only" name="close"></ion-icon>
+    </ion-button>
+  </ion-buttons>
+</ion-header>
+
+<ion-content>
+  <div class="imagenDeUsuario">
+    <ion-avatar class="profileImg">
+      <img  src={{user.imgProfile}}>
+    </ion-avatar>  
+    <ion-buttons>
+      <ion-button (click)="selectImage()">cambiar imagen de perfil</ion-button>
+    </ion-buttons>
+  </div>
+  
+   <div class="formmulario">
+    <ion-item class="item">
+      <ion-label position="floating">Nombre de Usuario</ion-label>
+      <ion-input [(ngModel)]="user.username"></ion-input>
+    </ion-item>
+   </div>
+</ion-content>
+<ion-footer>
+  <ion-button (click)="update()" expand="full" color="primary">Actualizar</ion-button>
+</ion-footer>

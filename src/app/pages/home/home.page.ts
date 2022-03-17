@@ -23,6 +23,7 @@ export class HomePage {
   ngOnInit() {
     this.mnu.enable(true);
     this.getAllpost();
+    this.global.presentLoading('Cargando...')
   }
   
    getAllpost(){
@@ -31,6 +32,9 @@ export class HomePage {
       this.publicaciones =  res;
       console.log(this.publicaciones);
       this.dataList = this.publicaciones.slice(0, this.topLimit);
+      setTimeout(() =>{
+        this.global.loadingController.dismiss();
+      },2000)
       },
       err =>{
         console.log(err);

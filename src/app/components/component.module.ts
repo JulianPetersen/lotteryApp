@@ -5,6 +5,8 @@ import { PublicacionSorteoComponent } from './publicacion-sorteo/publicacion-sor
 import { HeaderComponent } from './header/header.component';
 import { RouterModule } from '@angular/router';
 import { MenuComponent } from './menu/menu.component';
+import { UpdateUserComponent } from './update-user/update-user.component';
+import { FormsModule } from '@angular/forms';
 
 
 
@@ -12,17 +14,20 @@ import { MenuComponent } from './menu/menu.component';
   declarations: [
     PublicacionSorteoComponent,
     HeaderComponent,
-    MenuComponent
+    MenuComponent,
+    UpdateUserComponent
   ],
   imports: [
     CommonModule,
     IonicModule,
-    RouterModule
+    RouterModule,
+    FormsModule
   ],
   exports: [
     PublicacionSorteoComponent,
     HeaderComponent,
-    MenuComponent
+    MenuComponent,
+    UpdateUserComponent
   ]
 })
 export class ComponentModule { }
