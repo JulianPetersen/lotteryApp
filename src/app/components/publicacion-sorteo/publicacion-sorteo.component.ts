@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { PublicacionService } from 'src/app/services/publicacion.service';
 import { LoadingController } from '@ionic/angular';
 import { GlobalesService } from 'src/app/services/globales.service';
+import { Browser } from '@capacitor/browser';
 
 @Component({
   selector: 'app-publicacion-sorteo',
@@ -18,9 +19,12 @@ export class PublicacionSorteoComponent implements OnInit {
     
   }  
 
-  openBrowser(url){
-    this.global.openBrowser(url);
-  }
+
+  openCapacitorSite = async (url) => {
+    await Browser.open({ url: url });
+  };
+
+  
 
   
 
