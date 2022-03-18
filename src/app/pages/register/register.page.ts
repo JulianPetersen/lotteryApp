@@ -24,6 +24,8 @@ export class RegisterPage implements OnInit {
   errPassword:boolean = false
 
 
+  errMailExistenteMessage:any;
+  errMailExistente:boolean = false;
   constructor(private menuCtrl:MenuController, 
               private authService: AuthService, 
               private router:Router) { }
@@ -44,7 +46,9 @@ export class RegisterPage implements OnInit {
           this.router.navigate(['/login'])
         },
         err => {
-          console.log(err);
+          this.errMailExistenteMessage = err
+          this.errMailExistente = true
+          
         }
       )
     }

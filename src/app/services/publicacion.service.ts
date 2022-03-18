@@ -8,9 +8,9 @@ import { AuthService } from './auth.service';
 })
 export class PublicacionService {
   //produccion
-  private URL = 'https://api.sorteandorest.com.ar/api/'
+  //private URL = 'https://api.sorteandorest.com.ar/api/'
   //desarrollo
-  //private URL = 'http://localhost:3000/api/'
+  private URL = 'http://localhost:3000/api/'
   constructor(private http:HttpClient, private auth:AuthService,) { }
 
 

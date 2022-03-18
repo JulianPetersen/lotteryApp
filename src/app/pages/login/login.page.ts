@@ -54,7 +54,9 @@ export class LoginPage implements OnInit {
         err => {
           console.log(err.error)
            this.resError = err.error;
-           this.global.loadingController.dismiss();
+           setTimeout(() =>{
+            this.global.loadingController.dismiss();
+          },1000)
         }
       ) 
     }
