@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
-import { LoadingController, MenuController } from '@ionic/angular';
+import { MenuController } from '@ionic/angular';
 import { GlobalesService } from 'src/app/services/globales.service';
 import { PublicacionService } from 'src/app/services/publicacion.service';
+
 
 @Component({
   selector: 'app-home',
@@ -15,11 +16,16 @@ export class HomePage {
   private topLimit: number = 2;
   public dataList: any = [];
   
-  constructor(private post:PublicacionService, public mnu:MenuController, private global:GlobalesService) {
+  constructor(private post:PublicacionService, 
+              public mnu:MenuController, 
+              private global:GlobalesService,
+              ){
 
   }
   
   
+
+
   ngOnInit() {
     this.mnu.enable(true);
     this.getAllpost();
