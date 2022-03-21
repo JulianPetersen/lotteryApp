@@ -19,6 +19,11 @@
             <ion-select-option *ngFor="let c of categorys; let i=index" [value]="c._id">{{c.name}}</ion-select-option>
           </ion-select>
         </ion-item>
+        <ion-item>
+          <ion-label position="floating">Ciudad</ion-label>
+          <ion-input [(ngModel)]="newPost.ciudad"></ion-input>
+          <p class="description"> *Si su sorteo no está limitado a una ciudad en concreto, deje este capo vacío</p>
+        </ion-item>
       <div>
       </div>
         <div>

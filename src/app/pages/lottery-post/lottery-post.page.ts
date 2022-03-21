@@ -17,7 +17,8 @@ import { HomePage } from '../home/home.page';
 export class LotteryPostPage implements OnInit {
   newPost = {
     description: '',
-    SocialLink: ''
+    SocialLink: '',
+    ciudad: ''
   };
   
 
@@ -50,7 +51,7 @@ export class LotteryPostPage implements OnInit {
    uploadPhoto(){
      if(this.validateData()){
        this.global.presentLoading('Cargando...')
-      this.post.createPost(this.newPost.description, this.newPost.SocialLink,this.categorySelected,this.urlImagenSelected)
+      this.post.createPost(this.newPost.description, this.newPost.SocialLink,this.categorySelected,this.urlImagenSelected,this.newPost.ciudad)
       .subscribe ( 
         res => {
           setTimeout(() =>{

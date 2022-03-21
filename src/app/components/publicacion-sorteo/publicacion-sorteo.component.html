@@ -1,16 +1,23 @@
 <ion-card>
     <div class="header">
-        <ion-avatar class="imgAvatar">
+        <ion-avatar class="imgAvatar" (click)="gotToProfile(publicaciones.usuario._id)">
             <img src={{publicaciones.usuario.imgProfile}}>
         </ion-avatar>
-        <ion-card-subtitle>{{publicaciones.usuario.username}}</ion-card-subtitle>
+        <ion-card-subtitle (click)="gotToProfile(publicaciones.usuario._id)">{{publicaciones.usuario.username}}</ion-card-subtitle>
     </div>
     <div class="containerImg">
         <img class="imgSorteo" src= {{publicaciones.imgUrl}} alt="">
     </div>
-    <ion-card-content>
-      {{publicaciones.description}}
+    <ion-card-content class="contenido">
+        <div class="description">
+            {{publicaciones.description}}
+        </div>
+        <div class="textoCiudad">
+            <p >Valido para la ciudad: {{publicaciones.ciudad}}</p>
+        </div>
     </ion-card-content> 
+    
+    
     
     <a class="SocialLinkButton fuente"  (click)="openCapacitorSite(publicaciones.socialLink)">Participar</a>
        

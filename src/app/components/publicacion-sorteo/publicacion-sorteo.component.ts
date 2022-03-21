@@ -3,6 +3,7 @@ import { PublicacionService } from 'src/app/services/publicacion.service';
 import { LoadingController } from '@ionic/angular';
 import { GlobalesService } from 'src/app/services/globales.service';
 import { Browser } from '@capacitor/browser';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-publicacion-sorteo',
@@ -11,7 +12,10 @@ import { Browser } from '@capacitor/browser';
 })
 export class PublicacionSorteoComponent implements OnInit {
 
-  constructor(public publi:PublicacionService, public loader:LoadingController,public global:GlobalesService) { }
+  constructor(public publi:PublicacionService, 
+              public loader:LoadingController,
+              public global:GlobalesService,
+              public router:Router) { }
   
   @Input() publicaciones:any
 
@@ -24,7 +28,9 @@ export class PublicacionSorteoComponent implements OnInit {
     await Browser.open({ url: url });
   };
 
-  
+  gotToProfile(id){
+    this.router.navigateByUrl(`my-account/${id}`);
+  }
 
   
 

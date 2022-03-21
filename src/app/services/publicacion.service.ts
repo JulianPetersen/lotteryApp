@@ -36,7 +36,7 @@ export class PublicacionService {
   }
 
 
-  createPost( description:string, socialLink:string, category:any, imgUrl:string){
+  createPost( description:string, socialLink:string, category:any, imgUrl:string, ciudad:string){
     const headers = new HttpHeaders({
       'authorization': `bearer ${this.auth.getToken()}`
     })
@@ -45,6 +45,7 @@ export class PublicacionService {
     fd.append('socialLink', socialLink),
     fd.append('category', category)
     fd.append('imgUrl', imgUrl)
+    fd.append('ciudad', ciudad)
     return this.http.post(this.URL + 'post',fd,{headers})
   }
 
