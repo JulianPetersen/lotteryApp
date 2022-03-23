@@ -83,7 +83,8 @@ export class LotteryPostPage implements OnInit {
     const image = await Camera.getPhoto({
       quality:90,
       resultType: CameraResultType.Uri,
-      source: CameraSource.Prompt,
+      source: CameraSource.Prompt, 
+      allowEditing:true
       
     })
     .then  (async (imageData) => {

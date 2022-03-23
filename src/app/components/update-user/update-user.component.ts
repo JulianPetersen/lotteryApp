@@ -59,11 +59,16 @@ export class UpdateUserComponent implements OnInit {
 
 
   update(){
+    this.presentLoading();
     this.auth.updateUser(this.id, this.user)
       .subscribe(res => {
         console.log(res);
+       
       })
       this.modalController.dismiss();
+      setTimeout(() => {
+        this.loader.dismiss();
+      }, 1000);
   }
 
 

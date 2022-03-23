@@ -17,6 +17,7 @@ export class MyAccountPage implements OnInit {
   id:any;
   publicaciones:any
   user:any;
+  dismissModal;
 
   constructor(private route:ActivatedRoute,
               private post:PublicacionService, 
@@ -29,7 +30,10 @@ export class MyAccountPage implements OnInit {
     this.id = this.route.snapshot.params['id'];
     this.getpostByUser();
     this.obtainUser();
+    
   }
+
+ 
 
   obtainUser(){
     this.auth.obtainUser(this.id)
