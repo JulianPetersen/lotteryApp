@@ -33,7 +33,6 @@ export class MyAccountPage implements OnInit {
     
   }
 
- 
 
   obtainUser(){
     this.auth.obtainUser(this.id)
@@ -94,6 +93,9 @@ export class MyAccountPage implements OnInit {
         'id': this.id
       }
     });
+    modal.onDidDismiss().then(updateUser => {
+      this.obtainUser();
+    })
     return await modal.present();
   }
   

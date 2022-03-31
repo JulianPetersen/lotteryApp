@@ -29,6 +29,7 @@
     <p *ngIf="errMail" class="fuente errMessage">- Debe ingresar un Email</p>
     <p *ngIf="errUsername" class="fuente errMessage">- Debe ingresar un Nombre de Usuario</p>
     <p *ngIf="errPassword" class="fuente errMessage">- Debe Ingresar una contraseña</p>
-    <p *ngIf="errMailExistente" class="fuente errMessage">- Ya existe una cuenta con ese correo</p>
+    <p  class="fuente errMessage">- {{errMessage}}</p>
+    
   </div>
 </ion-content>
