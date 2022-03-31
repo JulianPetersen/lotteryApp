@@ -1,0 +1,40 @@
+.page1{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.image{
+    
+    display: flex;
+    flex-direction: column;
+    height: 500px;
+    justify-content: center;
+    align-items: center;
+}
+
+.imagen{
+    width: 80%;
+}
+
+.parrafo{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.texto{
+    margin: 30px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 17px;
+    color:gray;
+}
+
+.continuar{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

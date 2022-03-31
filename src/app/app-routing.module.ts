@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
-
 import { AuthGuard } from './auth.guard';
+
 
 const routes: Routes = [
   {
@@ -38,6 +38,10 @@ const routes: Routes = [
   {
     path: 'my-account/:id',
     loadChildren: () => import('./pages/my-account/my-account.module').then( m => m.MyAccountPageModule)
+  },
+  {
+    path: 'slide',
+    loadChildren: () => import('./pages/slide/slide.module').then( m => m.SlidePageModule)
   },
 ];
 

@@ -1,0 +1,27 @@
+<ion-content class="contenedor">
+  <div class="page1" *ngIf="page1">
+    <div class="image">
+      <img class="imagen" src="./assets/page2.png" alt="">
+    </div>
+    <div class="parrafo">
+      <p class="texto fuente">En SorteApp podes publicar los sorteos que haces en las redes sociales, difundirlos y llegar a mas gente.</p>
+    </div>
+    <div class="continuar">
+      
+        <ion-button color="primary" (click)="mostrarPagina2()">Continuar</ion-button>
+    </div>
+  </div>
+
+  <div class="page1" *ngIf="page2">
+    <div class="image">
+      <img class="imagen" src="./assets/page3.png" alt="">
+    </div>
+    <div class="parrafo">
+      <p class="texto fuente">Podes buscar los sorteos que más te interesan, Participar en todos lo que quieras y esperar tus recompensas.</p>
+    </div>
+    <div class="continuar">
+        <ion-button color="primary" (click)="goToRegistration()">Ingresar</ion-button>
+    </div>
+  </div>
+  
+</ion-content>
