@@ -16,6 +16,7 @@ export class CategoriesService {
   //private URL = 'https://api.sorteandorest.com.ar/api/'
   
   //desarrollo
+  
   private URL = 'http://localhost:3000/api/'
 
 

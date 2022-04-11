@@ -27,7 +27,6 @@ export class HomePage {
   ngOnInit() {
     this.mnu.enable(true);
     this.getAllpost();
-    
   }
 
   ionViewDidEnter(){
@@ -70,5 +69,8 @@ export class HomePage {
     },500)
   }
 
+ 
+
   
+
 }
