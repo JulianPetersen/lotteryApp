@@ -12,6 +12,8 @@ export class PublicacionService {
   //desarrollo
   
   private URL = 'http://localhost:3000/api/'
+
+  
   constructor(private http:HttpClient, private auth:AuthService,) { }
 
 

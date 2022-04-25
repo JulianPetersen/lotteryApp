@@ -38,7 +38,11 @@ const routes: Routes = [
   {
     path: 'my-account/:id',
     loadChildren: () => import('./pages/my-account/my-account.module').then( m => m.MyAccountPageModule)
+  },  {
+    path: 'realizar-sorteo',
+    loadChildren: () => import('./pages/realizar-sorteo/realizar-sorteo.module').then( m => m.RealizarSorteoPageModule)
   },
+
 ];
 
 @NgModule({

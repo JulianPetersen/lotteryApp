@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { MenuController } from '@ionic/angular';
 import { GlobalesService } from 'src/app/services/globales.service';
+import { IgCommentsService } from 'src/app/services/ig-comments.service';
 import { PublicacionService } from 'src/app/services/publicacion.service';
 
 
@@ -19,9 +20,8 @@ export class HomePage {
   constructor(private post:PublicacionService, 
               public mnu:MenuController, 
               private global:GlobalesService,
-              ){
-
-  }
+              private commentIg:IgCommentsService
+              ){}
   
 
   ngOnInit() {
@@ -30,10 +30,12 @@ export class HomePage {
   }
 
   ionViewDidEnter(){
-    
-      this.getAllpost();
-   
+    this.getAllpost();
   }
+
+
+  
+ 
   
    getAllpost(){
     this.post.getAllPost()

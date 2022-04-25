@@ -1,0 +1,28 @@
+<app-header></app-header>
+
+<ion-content class="contenedor">
+  <h2 class="titulo">Realiza un sorteo</h2>
+  <div class="form">
+    <ion-item>
+      <ion-label position="floating">Coloque el link de su sorteo</ion-label>
+      <ion-input [(ngModel)]= "LinkIg"></ion-input>
+    </ion-item>
+    <div>
+      <ion-button expand="full" (click)="getcommentIg()">
+        Elegir ganador
+      </ion-button>
+    </div>
+  </div>
+
+  <ion-card *ngIf="sorteado">
+    <ion-card-content>
+      <h5 class="titulo"> el ganador es</h5>
+    </ion-card-content>
+    <div class="ganador">
+      <p>{{ganador.author}}</p>
+    </div>
+  </ion-card>
+  <div class="errorContenedor">
+    <p *ngIf="errorLink" class="error fuente">Controle que su link pertenezca a un sorteo de instagram</p>
+  </div>
+</ion-content>
